@@ -1,8 +1,9 @@
 import React from "react";
 import html2canvas from 'html2canvas';
 
-function InviteCard() {
+function InviteCard({guestName}) {
   const downloadRef = React.useRef();
+  console.log("Invitecard called with guestName", guestName);
 
   const handleDownloadImage = async () => {
     const element = downloadRef.current;
@@ -36,7 +37,7 @@ function InviteCard() {
             alt={"Invitation Card"}
           />
         <h1 className="absolute invitee text-2xl lg:text-4xl sm:text-3xl text-white top-[27%] left-0 right-0 text-center h-fit m-auto">
-          Ubhek Kumar
+          {guestName ? guestName : "Friends and Family"}
         </h1>
       </article>
       <button
