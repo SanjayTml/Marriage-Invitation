@@ -1,6 +1,6 @@
 "use strict";
 
-export var Sakura = function Sakura(selector, options) {
+export default Sakura = function Sakura(selector, options) {
   var _this = this;
 
   if (typeof selector === 'undefined') {
