@@ -11,14 +11,13 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// import "jquery-sakura";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [showCard, setShowCard] = useState(false);
   const [displayName, setDisplayName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [nepaliErrorMessage, setNepaliErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -30,6 +29,7 @@ export default function Home() {
     console.log(filter);
 
     if(filter == "") {
+      setNepaliErrorMessage("कृपया फोन नम्बर राख्नुहोस्।");
       setErrorMessage("Please enter a phone number.");
       setShowError(true);
       return;
@@ -47,10 +47,12 @@ export default function Home() {
 
     if (error) {
       console.error(error);
+      setNepaliErrorMessage("क्षमा गर्नुहोस्, तपाईंको सन्देश मिलेन या आन्तरिक गड्बढी भयो।");
       setErrorMessage(error.message);
       setShowError(true);
       return;
     } else if (data.length === 0) {
+      setNepaliErrorMessage("क्षमा गर्नुहोस्, फोन नम्बर तालिकामा छैन। फेरी कोसिश गर्नुहोस्।");
       setErrorMessage("Sorry, the phone number doesn't exist in the list.");
       setShowError(true);
       console.log(data);
@@ -88,17 +90,18 @@ export default function Home() {
           src={"https://i.imgur.com/dGOOfnA.png"}
           alt="Image-top-right"
           className="top-right-decoration"
-          width={200}
-          height={200}
+          width={300}
+          height={300}
         />
         <Image
           src="https://i.imgur.com/t6ffnbn.png"
           alt="image-top-left"
           className="top-left-decoration"
-          width={200}
-          height={200}
+          width={300}
+          height={300}
         />
         <div className="max-w-6xl mx-auto">
+          <div className="sakuraDisplay"></div>
           <div className="flex flex-col h-screen items-center justify-center">
             {showCard ? (
               <InviteCard guestName={displayName} />
@@ -107,10 +110,12 @@ export default function Home() {
                 <p className="mb-2 text-center">
                   {showError ? (
                     <span className="text-red-400">
+                      {nepaliErrorMessage}
+                      <br/>
                       {errorMessage}
                     </span>
                   ) : (
-                    "Please enter your phone number where you received the sms."
+                    <p>कृपया हजुरको यहि फोन नंबर राखी 'Submit' थिच्नुहोस् । <br/> Please enter your phone number where you received the sms.</p>
                   )}
                 </p>
                 <div className="px-20 mx-auto">

@@ -366,15 +366,14 @@ body {
 .sakura {
 	/* background: -webkit-linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
     background: linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));*/
-	background: red;
+	background: #674ea7;
 	pointer-events: none;
 	position: absolute
 }
 
-.sakura {
-	background: #674ea7;
+.sakuraDisplay{
+	overflow: hidden;
 }
-
 
 /*******************************/
 
