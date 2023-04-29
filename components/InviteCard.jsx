@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import html2canvas from 'html2canvas';
-import { Sakura } from "../pages/sakura";
+import { Sakura } from "./sakura";
 import 'sakura-js';
 
 function InviteCard({guestName}) {
