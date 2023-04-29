@@ -1,6 +1,6 @@
 "use strict";
 
-export default Sakura = function Sakura(selector, options) {
+var Sakura = function Sakura(selector, options) {
   var _this = this;
 
   if (typeof selector === 'undefined') {
@@ -169,3 +169,5 @@ Sakura.prototype.stop = function () {
     }, settings.delay + 50);
   }
 };
+
+export default Sakura;
