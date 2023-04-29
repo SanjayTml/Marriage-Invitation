@@ -1,6 +1,6 @@
-"use strict";
+// Description: Sakura effect for marriage invitation.
 
-var Sakura = function Sakura(selector, options) {
+export var Sakura = function Sakura(selector, options) {
   var _this = this;
 
   if (typeof selector === 'undefined') {
@@ -70,14 +70,9 @@ var Sakura = function Sakura(selector, options) {
   } // Check if the element is in the viewport.
 
 
-//   function elementInViewport(el) {
-//     var rect = el.getBoundingClientRect();
-//     return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
-//   }
-
-function elementInViewport(el) {
+  function elementInViewport(el) {
     var rect = el.getBoundingClientRect();
-    return rect.bottom > 0 && rect.right > 0 && rect.left < (window.innerWidth || document.documentElement.clientWidth) && rect.top < (window.innerHeight || document.documentElement.clientHeight);
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
   }
 
   var createPetal = function () {
@@ -169,5 +164,3 @@ Sakura.prototype.stop = function () {
     }, settings.delay + 50);
   }
 };
-
-export default Sakura;
